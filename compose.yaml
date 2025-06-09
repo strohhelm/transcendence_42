@@ -1,0 +1,8 @@
+services:
+  webapp:
+    container_name: "app"
+    build: webapp/.
+    ports:
+      - 3000:3000
+    volumes:
+      - /Users/pstrohal/source/core/transcendence/webapp/volume:/transcendence
