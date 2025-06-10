@@ -4,5 +4,13 @@ services:
     build: webapp/.
     ports:
       - 3000:3000
+      - 8080:8080
+
     volumes:
-      - /Users/pstrohal/source/core/transcendence/webapp/volume:/transcendence
+      - ./webapp/volume:/app
+    secrets:
+      - Root_pw
+
+# secrets:
+#   Root_pw: 
+#     file: ./webapp/secrets/Root_pw.txt
