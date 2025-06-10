@@ -1,10 +1,10 @@
 FROM debian:12.11
 
 
-# curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \ 
 RUN apt-get update -y && apt-get upgrade -y && \
-    apt-get install -y curl  && \
-    apt-get install -y \
+	apt-get install -y curl  && \
+	curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
+	apt-get install -y \
 		nodejs \
 		openssh-server
 
