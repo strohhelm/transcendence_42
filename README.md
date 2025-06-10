@@ -2,11 +2,11 @@
 
 ## how to setup dev container:
 ```
-git clone
+git@github.com:strohhelm/transcendence_42.git
 ```
 
 ```
-cd <path to repo>
+cd transcendence_42
 ```
 
 ```
