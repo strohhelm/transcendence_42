@@ -39,7 +39,7 @@ git clone git@github.com:strohhelm/transcendence_42.git
 
 #### open another terminal
 ```
-docker exec -it app bash
+docker exec -it app zsh
 ```
 #### Test For now:
 ```
