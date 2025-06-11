@@ -8,9 +8,8 @@ RUN apt-get update -y && apt-get upgrade -y && \
 
 RUN mkdir  -p /var/run/sshd
 EXPOSE 22
-RUN cat << 'EOF' >> /root/.zshrc
-PROMPT='%B%F{red}➜ %n%F@%F{cyan}%m%f: %F{yellow}%~%F{#00ff00} ❯❯%b%F{DEFAULT} '
-EOF
+RUN echo 'PROMPT="%B%F{red}➜ %n%F@%F{cyan}%m%f: %F{yellow}%~%F{#00ff00} ❯❯%b%F{DEFAULT} "'>> /root/.zshrc
+
 	
 WORKDIR /app
 RUN mkdir -p /init
