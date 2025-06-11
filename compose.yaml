@@ -1,6 +1,7 @@
 services:
   webapp:
     container_name: "app"
+    hostname: "transcendenceDEV"
     build: webapp/.
     ports:
       - 3000:3000

@@ -1,18 +1,21 @@
-FROM debian:12.11
+FROM node:24
 
 
 RUN apt-get update -y && apt-get upgrade -y && \
-	apt-get install -y curl  && \
-	curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
-	apt-get install -y \
-		nodejs \
-		openssh-server
+	apt-get install -y  \
+	zsh
+	# openssh-server 
 
-WORKDIR /init
-RUN mkdir /var/run/sshd
+RUN mkdir  -p /var/run/sshd
 EXPOSE 22
+RUN cat << 'EOF' >> /root/.zshrc
+PROMPT='%B%F{red}➜ %n%F@%F{cyan}%m%f: %F{yellow}%~%F{#00ff00} ❯❯%b%F{DEFAULT} '
+EOF
+	
+WORKDIR /app
+RUN mkdir -p /init
+RUN chsh -s $(which zsh) root
+COPY ./init/init.sh /init/init.sh
+RUN chmod +x /init/init.sh
+ENTRYPOINT ["/init/init.sh"]
 
-
-COPY ./init/init.sh ./init.sh
-RUN chmod +x init.sh
-ENTRYPOINT ["./init.sh"]
