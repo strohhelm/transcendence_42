@@ -6,6 +6,7 @@ cd /app
 # if [ ! -d ./node_modules ]
 # then
 npm install
+npm install -g typescript
 # else
 # 	echo " Wohooo Project is already set up"
 # fi
