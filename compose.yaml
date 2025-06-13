@@ -9,9 +9,3 @@ services:
 
     volumes:
       - ./webapp/volume:/app
-    # secrets:
-    #   - Root_pw
-
-# secrets:
-#   Root_pw: 
-#     file: ./webapp/secrets/Root_pw.txt

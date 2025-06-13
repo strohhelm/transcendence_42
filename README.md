@@ -6,35 +6,35 @@ git clone git@github.com:strohhelm/transcendence_42.git
 ```
 
 ```
-	cd transcendence_42
+cd transcendence_42
 ```
 ```
-	docker compose up 
+docker compose up 
 ```
 #### if you update something in dockerfile
 ```
-	docker compose up --build
+docker compose up --build
 ```
 
 #### enter the container in the terminal
 ```
-	docker exec -it app zsh
+docker exec -it app zsh
 ```
 
 ## Commands
 
 #### compiles typescript to javascript
 ```
-	npm run build  
+npm run build  
 ```
 
 #### runs the specified javascript file in node -> runs the server
 ```
-	npm run start
+npm run start
 ```
-#### runs a nodemon too that watches changes in the ./app folder and immediately transpiles and restarts the server. Only for development
+#### runs tsx on the file specifies, which skips the build stage and runtime transpiles the typescript for node
 ```
-	npm run dev
+npm run dev
 ```
 
 #### open another terminal
