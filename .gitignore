@@ -2,3 +2,4 @@ node_modules
 secrets
 fastify-blog
 dir
+main.js
