@@ -4,7 +4,6 @@
 ```
 git clone git@github.com:strohhelm/transcendence_42.git
 ```
-
 ```
 cd transcendence_42
 ```
@@ -23,25 +22,17 @@ docker exec -it app zsh
 
 ## Commands
 
-#### compiles typescript to javascript
+#### compiles typescript to javascript (only the frontend atm)
 ```
 npm run build  
 ```
 
-#### runs the specified javascript file in node -> runs the server
-```
-npm run start
-```
-#### runs tsx on the file specifies, which skips the build stage and runtime transpiles the typescript for node
+#### compiles the frontend ts with tsc and runs the backens ts with tsx directly in node atm
 ```
 npm run dev
 ```
 
-#### open another terminal
+#### Visit Website
 ```
-docker exec -it app zsh
-```
-#### Test For now:
-```
-curl localhost:8080/ping
+http://localhost:8080
 ```
