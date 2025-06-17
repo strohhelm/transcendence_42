@@ -2,37 +2,44 @@ import fastify from 'fastify'
 import fastifyStatic from '@fastify/static';
 import path from 'path';
 import fs from 'fs/promises';
+import { PathLike } from 'fs';
 
+const templatesDir = "/app/app/templates"
 const server = fastify({
 	logger: true
 })
 
+//tell the server wher static files are to server, so just the index.html, css and jsfiles can be in this path
 server.register(fastifyStatic, {
   root: path.join(__dirname, '../../public'),
 });
 
-server.get('/', async (request, reply) => {
-  return reply.type('text/html').sendFile('index.html');
+//serves the index.html
+server.setNotFoundHandler( async (request, reply) => {
+  return reply.sendFile('index.html');
 })
 
-fastify.get('/templates/:name', async (request, reply) => {
-  const { name } = request.params;
-
+//spa dynamic router endpoint
+server.get('/page/:name', async (request, reply) => {
+	console.log("\n\n");
+	const route  = request.params as { name: string };
+	if (route)
+		console.log(route);
   // Sanitize name to avoid directory traversal (basic example)
-  if (!name.match(/^[a-z0-9\-]+\.html$/i)) {
-    return reply.status(400).send('Invalid template name');
+  if (!route.name.match(/^[a-z0-9\-/]+$/i) && route) {
+    return reply.code(400).send("Bad request");
   }
-
   try {
-    const filePath = path.join(templatesDir, name);
+	const filePath = path.join(templatesDir, route.name + ".html");
+	console.log(`current path: ${__dirname}`);
+	console.log(`filePath path: ${filePath}`);
+	await fs.access(filePath);
     const html = await fs.readFile(filePath, 'utf-8');
-
-    reply
-      .header('Content-Type', 'text/html; charset=utf-8')
-      .send(html);
+    reply.code(200).send(html);
   } catch (err) {
     reply.status(404).send('Template not found');
   }
+  console.log("\n\n");
 });
 
 

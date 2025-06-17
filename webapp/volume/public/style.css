@@ -8,16 +8,18 @@
   box-sizing: border-box;
 }
 
-html, body {
+body {
+  display: flex;
   font-family: 'JetBrains Mono', monospace;
   font-size: 16px;
   line-height: 1.5;
   background-color: #f8f9fa;
   color: #212529;
   padding: 2rem;
+  overflow-x: hidden;
 }
 .sidebar {
-  width: 220px;
+  width: 150px;
   height: 100vh;
   background: #1e1e1e;
   color: #fff;
@@ -48,6 +50,8 @@ html, body {
   margin-left: 220px;
   padding: 2rem;
   flex: 1;
+  width: calc(100% - 220px); /* make sure it doesn't overflow */
+  min-height: 100vh;
 }
 
 /* Headings */

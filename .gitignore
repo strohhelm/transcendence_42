@@ -1,5 +1,5 @@
 node_modules
 secrets
-fastify-blog
+.fastify-blog
 dir
 main.js
